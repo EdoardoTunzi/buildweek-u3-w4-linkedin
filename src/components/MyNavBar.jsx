@@ -1,25 +1,25 @@
-import { Container, Form, InputGroup, Nav, Navbar } from "react-bootstrap";
-import { Search } from "react-bootstrap-icons";
+import { Button, Container, Form, InputGroup, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 
 const MyNavBar = () => {
   return (
     <Navbar className="bg-body-white border-bottom p-0">
-      <Container>
+      <Container className="justify-content-start">
         <Navbar.Brand href="#home" className="d-flex align-items-center">
           <img
             alt=""
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png?20140125013055"
             width="35"
             height="35"
-            className="d-inline-block align-top me-3"
+            className="d-inline-block align-top me-2"
           />
           <Form inline className="me-5">
             <InputGroup>
               <InputGroup.Text id="search-field" className="bg-searchbar">
                 {" "}
-                <Search />
+                <Search className="fw-bold" />
               </InputGroup.Text>
-              <Form.Control placeholder="Cerca" aria-label="search" className="bg-searchbar" />
+              <Form.Control placeholder="Cerca" aria-label="search" className="bg-searchbar search-bar" />
             </InputGroup>
           </Form>
           <Nav className="me-auto ">
@@ -111,6 +111,181 @@ const MyNavBar = () => {
             </Nav.Link>
           </Nav>
         </Navbar.Brand>
+        <div className=" text-secondary">
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg"
+            alt=""
+            width={40}
+            className="rounded-circle"
+          />
+          <NavDropdown title="Tu" id="profile-nav-dropdown" align="end">
+            <div className="d-flex align-items-center">
+              <img
+                src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
+                className="rounded-circle"
+                width={70}
+                height={70}
+              />
+              <p>Nome Cognome</p>
+            </div>
+            <div className="d-flex border-bottom pb-2 ">
+              <Button className="btn bg-white text-primary border border-1 border-primary rounded-4 ms-2 me-2 py-0 px-4 fw-semibold">
+                Visualizza <br />
+                profilo
+              </Button>
+              <Button className=" btn bg-primary text-light rounded-4 me-2 py-0 px-5 pb-4 fw-semibold">Verifica</Button>
+            </div>
+            <p className="fw-semibold ps-3 pt-2 mb-1 fs-5">Account</p>
+            <div className="d-flex align-items-start">
+              <img src="/src/assets/img/dropdownIcon.png" alt="box-icon" className="rounded-2 mt-1 ms-3 me-1" width={20} />
+              <NavDropdown.Item href="#action/3.1" className="fw-semibold p-0 text-secondary">
+                Prova 1 mese di Premium per 0 <br />
+                EUR
+              </NavDropdown.Item>
+            </div>
+            <NavDropdown.Item href="#" className="text-secondary">
+              Impostazioni e privacy
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#" className="text-secondary">
+              Guida
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#" className="text-secondary">
+              Lingua
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <p className="fw-semibold ps-3 pt-2 mb-1 fs-5">Gestisci</p>
+            <NavDropdown.Item href="#" className="text-secondary">
+              Post e attività
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#" className="text-secondary">
+              Account per la pubblicazione di of...
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="" className="text-secondary">
+              Esci
+            </NavDropdown.Item>
+          </NavDropdown>
+        </div>
+
+        <div className="text-center text-secondary">
+          <Grid3x3GapFill className="fs-4 " />
+          <NavDropdown title="Per le aziende" id="second-nav-dropdown" align="end">
+            <Container className="d-flex p-4 pb-5">
+              {/* menu sinistra */}
+              <div className="ps-3 pe-5 border-end">
+                <NavDropdown.Item className="fw-semibold ps-3 pt-2 mb-4 fs-5 ">Le mie app</NavDropdown.Item>
+                <div className="d-flex align-items-center mb-4 ps-3">
+                  <img src="https://cdn-icons-png.flaticon.com/128/14026/14026853.png" alt="" className="" width={30} height={30} />
+                  <NavDropdown.Item href="#" className="fw-semibold p-0 ps-3">
+                    Vendi
+                  </NavDropdown.Item>
+                </div>
+                <div className="d-flex align-items-center mb-4 ps-3">
+                  <img src="https://cdn-icons-png.flaticon.com/128/14026/14026853.png" alt="" className="" width={30} height={30} />
+                  <NavDropdown.Item href="#" className="fw-semibold p-0 ps-3">
+                    Gruppi
+                  </NavDropdown.Item>
+                </div>
+
+                <NavDropdown.Item className="fw-semibold ps-3 pt-2 mb-4 fs-6 text-secondary ">Talent</NavDropdown.Item>
+                <div className="d-flex align-items-center mb-4 ps-3">
+                  <img src="https://cdn-icons-png.flaticon.com/128/14026/14026853.png" alt="" className="" width={30} height={30} />
+                  <NavDropdown.Item href="#" className="fw-semibold p-0 ps-3">
+                    Talent Insights
+                  </NavDropdown.Item>
+                </div>
+                <div className="d-flex align-items-center mb-4 ps-3">
+                  <img src="https://cdn-icons-png.flaticon.com/128/14026/14026853.png" alt="" className="" width={30} height={30} />
+                  <NavDropdown.Item href="#" className="fw-semibold p-0 ps-3">
+                    Pubblicizza un&apos; offerta di lavoro
+                  </NavDropdown.Item>
+                </div>
+                <NavDropdown.Item className="fw-semibold ps-3 pt-2 mb-4 fs-6 text-secondary ">Vendite</NavDropdown.Item>
+                <div className="d-flex align-items-center mb-4 ps-3">
+                  <img src="https://cdn-icons-png.flaticon.com/128/14026/14026853.png" alt="" className="" width={30} height={30} />
+                  <NavDropdown.Item href="#" className="fw-semibold p-0 ps-3">
+                    Market dei servizi
+                  </NavDropdown.Item>
+                </div>
+                <NavDropdown.Item className="fw-semibold ps-3 pt-2 mb-4 fs-6 text-secondary ">Marketing</NavDropdown.Item>
+                <div className="d-flex align-items-center mb-4 ps-3">
+                  <img src="https://cdn-icons-png.flaticon.com/128/14026/14026853.png" alt="" className="" width={30} height={30} />
+                  <NavDropdown.Item href="#" className="fw-semibold p-0 ps-3">
+                    Pubblicizza
+                  </NavDropdown.Item>
+                </div>
+                <NavDropdown.Item className="fw-semibold ps-3 pt-2 mb-4 fs-6 text-secondary ">Learning</NavDropdown.Item>
+                <div className="d-flex align-items-center mb-4 ps-3">
+                  <img src="https://cdn-icons-png.flaticon.com/128/14026/14026853.png" alt="" className="" width={30} height={30} />
+                  <NavDropdown.Item href="#" className="fw-semibold p-0 ps-3">
+                    Learning
+                  </NavDropdown.Item>
+                </div>
+              </div>
+              {/* menù destra */}
+              <div className="px-4">
+                <NavDropdown.Item className="fw-semibold ps-3 pt-2 mb-4 fs-5 ">Scopri altro per il business</NavDropdown.Item>
+                <NavDropdown.Item href="#" className="mb-1">
+                  <div>
+                    <p className="m-0 text-tertiary fw-bold">Assumi su LinkedIn</p>
+                    <p className="text-secondary">Trova, attrai e assumi</p>
+                  </div>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item href="#" className="mb-1">
+                  <div>
+                    <p className="m-0 text-tertiary fw-bold">Vendi con Linkedin</p>
+                    <p className="text-secondary">Sbloocca nuove opportunità di vendita</p>
+                  </div>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item href="#" className="mb-1">
+                  <div>
+                    <p className="m-0 text-tertiary fw-bold">Offerta di lavoro gratuita</p>
+                    <p className="text-secondary">Ottieni rapidamente candidati qualficati</p>
+                  </div>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item href="#" className="mb-3">
+                  <div>
+                    <p className="m-0 text-tertiary fw-bold">Fai pubblicità su Linkedin</p>
+                    <p className="text-secondary">Acquisisci clienti e fai crescere la tua azienda</p>
+                  </div>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item href="#" className="mb-3">
+                  <div>
+                    <p className="m-0 text-tertiary fw-bold">Inizia con Premium</p>
+                    <p className="text-secondary">Amplia e sfrutta la tua rete</p>
+                  </div>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item href="#" className="mb-1">
+                  <div>
+                    <p className="m-0 text-tertiary fw-bold">Impara LinkedIn</p>
+                    <p className="text-secondary">Corsi per formare i tuoi dipendenti</p>
+                  </div>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item href="#" className="mb-1">
+                  <div>
+                    <p className="m-0 text-tertiary fw-bold">Admin Center</p>
+                    <p className="text-secondary">Gestisci i dettagli di fatturazione e account</p>
+                  </div>
+                </NavDropdown.Item>
+                <NavDropdown.Item className="fw-semibold ps-3 pt-2 mb-4 ">
+                  Crea un apagina aziendale <span className="fs-4">+</span>
+                </NavDropdown.Item>
+              </div>
+            </Container>
+
+            {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+          </NavDropdown>
+        </div>
       </Container>
     </Navbar>
   );
