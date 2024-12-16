@@ -16,12 +16,12 @@ const ProfileCard = () => {
   const [name, setname] = useState("Davide");
   const [surname, setsurname] = useState("Alonzi");
   const fullName = name + " " + surname;
-
   const [username, setusername] = useState("notdav04");
   const [description, setdesciption] = useState(".........");
   const [area, setarea] = useState("Sora");
   const [job, setjob] = useState("web developer");
   const [error, setError] = useState(false);
+  const email = "davide.alonzi26@gmail.com";
   let onChangeName = "";
   let onchangeSurname = "";
   let onchangeUsername = "";
@@ -29,7 +29,7 @@ const ProfileCard = () => {
   let onchangeArea = "";
   let onchangeJob = "";
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (
       onChangeName.length > 0 &&
       onchangeSurname.length > 0 &&
@@ -47,6 +47,34 @@ const ProfileCard = () => {
       setjob(onchangeJob);
       setError(false);
       handleShow();
+      try {
+        const response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/profile/",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZmNkYjBlYTI4NjAwMTUyOGI5NDUiLCJpYXQiOjE3MzQzNDM4OTksImV4cCI6MTczNTU1MzQ5OX0.eGPTm5FV956jcHuYINBSHJz48SU1WOwp0tk2R2WjMDo"
+            },
+            body: JSON.stringify({
+              _id: "675ffcdb0ea286001528b945",
+              name: name,
+              surname: surname,
+              email: email,
+              username: username,
+              bio: description,
+              title: job,
+              area: area
+            })
+          }
+        );
+        if (!response.ok) {
+          console.log("errore nella fetch put,", response.statusText);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     } else {
       console.log("errore nel changing");
 
