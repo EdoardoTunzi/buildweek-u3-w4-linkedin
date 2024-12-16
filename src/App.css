@@ -8,3 +8,11 @@
   background-color: #edf3f8;
   border: none;
 }
+#search-bar {
+  width: 350px;
+  margin-right: 50px;
+}
+.link-premium {
+  color: #8a5607;
+  text-decoration: underline;
+}
