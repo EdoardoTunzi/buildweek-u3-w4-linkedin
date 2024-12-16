@@ -1,7 +1,41 @@
+import { useEffect } from "react";
 import { Button, Container, Form, InputGroup, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
 
 const MyNavBar = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
+  const fetchUser = async () => {
+    try {
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM3MGUwODhhZDEyOTAwMTU4NzZiYzgiLCJpYXQiOjE3MzQzNDE1MTYsImV4cCI6MTczNTU1MTExNn0._AJh5YWg5RjT9Sb4d60Mzd3OhMwLIoemoRxaNfCetUA"
+        }
+      });
+      if (response.ok) {
+        let user = await response.json();
+        console.log(user);
+        if (user) {
+          dispatch({ type: "ADD_TO_USER", payload: user });
+        } else {
+          console.log("Error: data not found");
+        }
+      } else {
+        throw new Error("Error in fetching user data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Navbar className="bg-body-white border-bottom p-0">
       <Container className="justify-content-start">
@@ -112,12 +146,7 @@ const MyNavBar = () => {
           </Nav>
         </Navbar.Brand>
         <div className=" text-secondary px-4 border-end">
-          <img
-            src="https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg"
-            alt=""
-            width={32}
-            className="rounded-circle"
-          />
+          <img src={user.image} alt="" width={32} className="rounded-circle" />
           <NavDropdown title="Tu" id="profile-nav-dropdown" align="end" className="fs-7 text-center">
             <div className="d-flex align-items-center">
               <img
