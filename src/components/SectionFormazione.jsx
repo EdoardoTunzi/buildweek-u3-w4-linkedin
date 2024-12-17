@@ -22,7 +22,7 @@ const SectionFormazione = () => {
             />
             <div className="d-flex flex-column ms-3">
               <h5 className="fs-6">Università del Piemonete orientale</h5>
-              <p>Laurea breve, Ingegneria gestionale</p>
+              <p>Laurea breve,Ingegneria gestionale</p>
               <p>lug 2021 - feb 2024</p>
               <p className="fw-light">votazione: 92/110</p>
             </div>
@@ -39,7 +39,7 @@ const SectionFormazione = () => {
             />
             <div className="d-flex flex-column ms-3">
               <h5 className="fs-6">Mindfulness Educators</h5>
-              <p>Facilitatore Mindfulness (scuola preparatoria)</p>
+              <p>Facilitatore Mindfulness-(scuola preparatoria)</p>
               <p>set 2009 - giu 2016</p>
               <p className="fw-light">votazione: 67/100</p>
             </div>
