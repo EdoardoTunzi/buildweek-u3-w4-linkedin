@@ -4,7 +4,7 @@ import { ArrowRight, EyeFill } from "react-bootstrap-icons";
 const Analisi = () => {
   return (
     <>
-      <Container className="border border-1 rounded-2 mt-4 ">
+      <Container className="border border-1 rounded-2 mt-2 bg-white">
         <div className="p-3 ">
           <h2 className="mb-1">Analisi</h2>
           <p className="text-secondary">
@@ -27,9 +27,7 @@ const Analisi = () => {
                 <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"></path>
               </svg>
               <div className="ms-2">
-                <p className="mb-1 fw-semibold">
-                  {Math.floor(Math.random() * 100)} visualizzazioni del profilo
-                </p>
+                <p className="mb-1 fw-semibold">{Math.floor(Math.random() * 100)} visualizzazioni del profilo</p>
                 <p>Scopri chi ha visitato il tuo profilo</p>
               </div>
             </div>
@@ -49,12 +47,8 @@ const Analisi = () => {
                 <path d="M23 20v1H1v-1zM8 9H2v10h6zm7-6H9v16h6zm7 11h-6v5h6z"></path>
               </svg>
               <div className="ms-2">
-                <p className="mb-1 fw-semibold">
-                  {Math.floor(Math.random() * 100)} impressioni del post
-                </p>
-                <p className="mb-1">
-                  Crea un post per aumentare l&apos;interesse
-                </p>
+                <p className="mb-1 fw-semibold">{Math.floor(Math.random() * 100)} impressioni del post</p>
+                <p className="mb-1">Crea un post per aumentare l&apos;interesse</p>
                 <p className="text-secondary">Ultimi 7 giorni</p>
               </div>
             </div>
