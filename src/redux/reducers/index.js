@@ -9,6 +9,12 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         user: action.payload
       };
+    case "MOD_USER":
+      return {
+        ...state,
+        user: action.payload
+      };
+
     default:
       return state;
   }
