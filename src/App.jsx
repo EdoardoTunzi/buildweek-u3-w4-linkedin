@@ -1,9 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import MyNavBar from "./components/MyNavBar";
+import ProfileCard from "./components/ProfileCard";
 
 function App() {
-  return <MyNavBar />;
+  return (
+    <>
+      <ProfileCard />
+    </>
+  );
 }
 
 export default App;
