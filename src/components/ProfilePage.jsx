@@ -3,6 +3,7 @@ import ProfileCard from "./ProfileCard";
 import CardUsers from "./CardUsers";
 import MyFooter from "./MyFooter";
 import Analisi from "./Analisi";
+import Informazioni from "./Informazioni";
 const ProfilePage = () => {
   return (
     <Container>
@@ -10,6 +11,7 @@ const ProfilePage = () => {
         <Col xs={9}>
           <ProfileCard />
           <Analisi />
+          <Informazioni />
         </Col>
         <Col xs={3}>
           <CardUsers />
