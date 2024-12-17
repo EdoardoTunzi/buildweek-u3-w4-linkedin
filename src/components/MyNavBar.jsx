@@ -12,13 +12,13 @@ const MyNavBar = () => {
       let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM3MGUwODhhZDEyOTAwMTU4NzZiYzgiLCJpYXQiOjE3MzQzNDE1MTYsImV4cCI6MTczNTU1MTExNn0._AJh5YWg5RjT9Sb4d60Mzd3OhMwLIoemoRxaNfCetUA"
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
         }
       });
       if (response.ok) {
         let user = await response.json();
-        console.log(user);
         if (user) {
+          console.log(user);
           dispatch({ type: "ADD_TO_USER", payload: user });
         } else {
           console.log("Error: data not found");
@@ -33,6 +33,7 @@ const MyNavBar = () => {
 
   useEffect(() => {
     fetchUser();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -47,7 +48,7 @@ const MyNavBar = () => {
             height="35"
             className="d-inline-block align-top me-2"
           />
-          <Form inline className="me-5">
+          <Form style={{ display: "inline" }} className="me-5">
             <InputGroup id="search-bar">
               <InputGroup.Text id="search-field" className="bg-searchbar">
                 {" "}
@@ -146,12 +147,12 @@ const MyNavBar = () => {
           </Nav>
         </Navbar.Brand>
         <div className=" text-secondary px-4 border-end">
-          <img src={user.image} alt="" width={32} className="rounded-circle" />
+          <img src={user?.image || "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"} alt="" width={32} className="rounded-circle" />
           <NavDropdown title="Tu" id="profile-nav-dropdown" align="end" className="fs-7 text-center">
             <div className="d-flex align-items-center">
               <img
-                src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
-                className="rounded-circle"
+                src={user?.image || "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"}
+                className="rounded-circle ms-2 mb-2 me-2"
                 width={70}
                 height={70}
               />
@@ -403,12 +404,6 @@ const MyNavBar = () => {
                 </NavDropdown.Item>
               </div>
             </Container>
-
-            {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
           </NavDropdown>
         </div>
         <Nav.Link href="#" className="px-3 link-premium fs-7 text-center">

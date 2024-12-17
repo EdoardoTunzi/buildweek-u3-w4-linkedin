@@ -1,5 +1,5 @@
 const initialState = {
-  user: []
+  user: null
 };
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -7,7 +7,7 @@ const mainReducer = (state = initialState, action) => {
       //azione da svolgere
       return {
         ...state,
-        user: [action.payload]
+        user: action.payload
       };
     default:
       return state;
