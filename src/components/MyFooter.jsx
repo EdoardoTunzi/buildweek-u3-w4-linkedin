@@ -3,7 +3,7 @@ import {
   ArrowRight,
   GearFill,
   QuestionCircleFill,
-  ShieldShaded,
+  ShieldShaded
 } from "react-bootstrap-icons";
 
 const MyFooter = () => {
@@ -46,8 +46,8 @@ const MyFooter = () => {
                   Informativa sul copyright
                 </Dropdown.Item>
                 <Dropdown.Item className="fw-semibold" href="#/action-3">
-                  Opzioni relative all&apos;Informativa sulla privacy (Stato della
-                  California)
+                  Opzioni relative all&apos;Informativa sulla privacy (Stato
+                  della California)
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -67,9 +67,7 @@ const MyFooter = () => {
             <div className="d-flex">
               <div>
                 <QuestionCircleFill className="me-1 fs-5" />
-                <span className="fs-5 fw-semibold text-secondary">
-                  Domande?
-                </span>
+                <span className="fs-6 fw-bold text-secondary">Domande?</span>
                 <br />
                 <span className="fs-6 fw-light ms-4">
                   Visita il nostro Centro assistenza.
@@ -81,7 +79,7 @@ const MyFooter = () => {
             <div className="d-flex">
               <div>
                 <GearFill className="me-1 fs-5" />
-                <span className="fs-5 fw-semibold text-secondary">
+                <span className="fs-6 fw-bold text-secondary">
                   Gestisci il tuo account e la tua privacy
                 </span>
                 <br />
@@ -95,7 +93,7 @@ const MyFooter = () => {
             <div className="d-flex">
               <div>
                 <ShieldShaded className="me-1 fs-5" />
-                <span className="fs-5 fw-semibold text-secondary">
+                <span className="fs-6 fw-bold text-secondary">
                   Trasparenza sui contenuti consigliati
                 </span>
                 <br />

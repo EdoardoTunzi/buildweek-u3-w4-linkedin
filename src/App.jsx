@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import ProfileCard from "./components/ProfileCard";
+
 import MyNavBar from "./components/MyNavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <MyNavBar />
         <Routes>
           {/* <Route path="/" element = {}/> */}
-          <Route path="/profile" element={<ProfileCard />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </>

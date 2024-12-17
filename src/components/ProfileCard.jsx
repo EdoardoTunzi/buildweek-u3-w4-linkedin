@@ -98,7 +98,7 @@ const ProfileCard = () => {
     <>
       {user && (
         <div>
-          <Card style={{ width: "50%" }}>
+          <Card>
             <Card.Img variant="top" src={img} style={{ height: "200px" }} />
             <Card.Body className="ms-2">
               <Row

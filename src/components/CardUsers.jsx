@@ -13,8 +13,8 @@ const CardUsers = () => {
   useEffect(() => {
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     })
       .then((response) => {
         if (response.ok) {
@@ -32,8 +32,8 @@ const CardUsers = () => {
 
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     })
       .then((response) => {
         if (response.ok) {
@@ -55,8 +55,12 @@ const CardUsers = () => {
       <Row md={1} className="d-flex flex-column border border-1 rounded-3">
         <div className="px-3">
           <h5 className="fs-5 mt-3 mb-0">Altri profili per te</h5>
-          {firstArrUsers.map((user) => (
-            <Col md={3} key={user.id} className="ms-1 border-bottom">
+          {firstArrUsers.map((user, index) => (
+            <Col
+              md={12}
+              key={index}
+              className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}
+            >
               <Card className="d-flex flex-row border-0">
                 <div
                   className="rounded-circle overflow-hidden mt-3"
@@ -88,8 +92,12 @@ const CardUsers = () => {
         <div>
           <h5 className="fs-5 mt-3 mb-0">Persone che potresti conoscere </h5>
           <span>Dalla tua azienda</span>
-          {SecondArrUsers.map((user) => (
-            <Col md={3} key={user.id} className="ms-1 border-bottom">
+          {SecondArrUsers.map((user, index) => (
+            <Col
+              md={12}
+              key={index}
+              className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}
+            >
               <Card className="d-flex flex-row border-0">
                 <div
                   className="rounded-circle overflow-hidden mt-3"
