@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Form, Modal } from "react-bootstrap";
 import { Pencil, PlusLg } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 const Experience = () => {
+  const navigate = useNavigate();
   const [experiences, setExperiences] = useState([]);
   const [show, setShow] = useState(false);
   /*  const [update, setUpdate] = useState(false); */
@@ -136,7 +138,12 @@ const Experience = () => {
               handleShow();
             }}
           />
-          <Pencil className="fs-5" />
+          <Pencil
+            className="fs-5"
+            onClick={() => {
+              navigate("/details/experience");
+            }}
+          />
         </div>
       </div>
       {experiences &&

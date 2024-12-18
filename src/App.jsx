@@ -4,6 +4,7 @@ import "./App.css";
 import MyNavBar from "./components/MyNavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfilePage from "./components/ProfilePage";
+import DetailsExperience from "./components/DetailsExperience";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element = {}/> */}
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/details/experience" element={<DetailsExperience />} />
         </Routes>
       </BrowserRouter>
     </>
