@@ -2,7 +2,9 @@
 body {
   background-color: #f4f2ee;
 }
-
+.btn-custom:hover {
+  background-color: #0000000f !important;
+}
 .fs-7 {
   font-size: 0.8rem;
 }

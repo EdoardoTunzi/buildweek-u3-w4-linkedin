@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Button, Container, Form, InputGroup, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MyNavBar = () => {
   const dispatch = useDispatch();
@@ -43,13 +43,15 @@ const MyNavBar = () => {
     <Navbar className="bg-body-white border-bottom p-0 bg-white sticky-top">
       <Container className="justify-content-start">
         <Navbar.Brand href="#home" className="d-flex align-items-center">
-          <img
-            alt=""
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png?20140125013055"
-            width="35"
-            height="35"
-            className="d-inline-block align-top me-2"
-          />
+          <Link to={"/"}>
+            <img
+              alt=""
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png?20140125013055"
+              width="35"
+              height="35"
+              className="d-inline-block align-top me-2"
+            />
+          </Link>
           <Form style={{ display: "inline" }} className="me-5">
             <InputGroup id="search-bar">
               <InputGroup.Text id="search-field" className="bg-searchbar">
@@ -60,7 +62,7 @@ const MyNavBar = () => {
             </InputGroup>
           </Form>
           <Nav className="me-auto ">
-            <Nav.Link href="#home" className="p-0 mx-5">
+            <Nav.Link href={"/"} className="p-0 mx-5">
               <div className=" text-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
