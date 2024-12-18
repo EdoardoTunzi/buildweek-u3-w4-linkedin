@@ -3,6 +3,7 @@ import PostCard from "./PostCard";
 import { useEffect, useState } from "react";
 import LeftAsideHome from "./LeftAsideHome";
 import RightAsideHome from "./RightAsideHome";
+import AsideFooterHome from "./AsideFooterHome";
 import CreatePost from "./CreatePost";
 import { CaretDownFill } from "react-bootstrap-icons";
 const HomePage = () => {
@@ -67,6 +68,7 @@ const HomePage = () => {
         </Col>
         <Col md={3}>
           <RightAsideHome />
+          <AsideFooterHome />
         </Col>
       </Row>
     </Container>
