@@ -40,7 +40,7 @@ const HomePage = () => {
         <Col md={3}></Col>
         <Col md={7}>
           {posts &&
-            posts.map((post) => (
+            posts.slice(0, 30).map((post) => (
               <div key={post._id}>
                 <PostCard post={post} />
               </div>

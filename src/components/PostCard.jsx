@@ -9,7 +9,7 @@ const PostCard = ({ post }) => {
       <div className="d-flex justify-content-between mb-3">
         <div className="d-flex align-items-center">
           <img
-            src="https://static.vecteezy.com/system/resources/thumbnails/036/280/651/small_2x/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"
+            src={post.user.image || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"}
             alt=""
             className="rounded-circle"
             width={50}
