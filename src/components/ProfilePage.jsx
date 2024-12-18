@@ -11,14 +11,12 @@ import Interessi from "./Interessi";
 import LinguaProfilo from "./LinguaProfilo";
 import Experience from "./Experience";
 import SectionFormazione from "./SectionFormazione";
-import CreatePost from "./CreatePost";
 
 const ProfilePage = () => {
   return (
     <Container>
       <Row className="mt-4 mb-5 pb-5">
         <Col xs={9}>
-          <CreatePost />
           <ProfileCard />
           <SectionConsigliati />
           <Analisi />
