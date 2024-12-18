@@ -4,9 +4,9 @@ import { BoxArrowRight, Info } from "react-bootstrap-icons";
 const RightAsideHome = () => {
   return (
     <>
-      <Container>
-        <Row className="flex-column">
-          <Col md={3} className="border rounded-3 bg-white">
+      <Container className="mt-2">
+        <Row className="flex-column ">
+          <Col md={12} className="border rounded-3 bg-white p-4">
             <div className="d-flex justify-content-between align-items-baseline">
               <h4>In primo piano</h4>
               <Info className="text-bg-dark rounded-1" />
@@ -52,11 +52,7 @@ const RightAsideHome = () => {
             <h6 className="text-secondary mb-3">I giochi di oggi</h6>
             <Col>
               <div className="d-flex mb-3 align-items-center">
-                <img
-                  src="https://static.licdn.com/aero-v1/sc/h/25itbd3dpc6ockbgvdhot9qp1"
-                  width={40}
-                  alt=""
-                />
+                <img src="https://static.licdn.com/aero-v1/sc/h/25itbd3dpc6ockbgvdhot9qp1" width={40} alt="" />
                 <div className="ms-2">
                   <h6 className="m-0">Queens</h6>
                   <p className="m-0 text-secondary">Incorona ogni regione</p>
@@ -66,11 +62,7 @@ const RightAsideHome = () => {
                 </a>
               </div>
               <div className="d-flex align-items-center mb-2">
-                <img
-                  src="https://static.licdn.com/aero-v1/sc/h/im5l00imv9odauybfemlfxm6"
-                  width={40}
-                  alt=""
-                />
+                <img src="https://static.licdn.com/aero-v1/sc/h/im5l00imv9odauybfemlfxm6" width={40} alt="" />
                 <div className="ms-2">
                   <h6 className="m-0">Tango</h6>
                   <p className="m-0 text-secondary">Armonizza la griglia</p>
