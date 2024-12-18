@@ -10,6 +10,7 @@ import Competenze from "./Competenze";
 import Interessi from "./Interessi";
 import LinguaProfilo from "./LinguaProfilo";
 import Experience from "./Experience";
+import SectionFormazione from "./SectionFormazione";
 
 const ProfilePage = () => {
   return (
@@ -22,6 +23,7 @@ const ProfilePage = () => {
           <Informazioni />
           <Attivita />
           <Experience />
+          <SectionFormazione />
           <Competenze />
           <Interessi />
         </Col>
