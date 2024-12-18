@@ -42,7 +42,7 @@ const HomePage = () => {
           {posts &&
             posts.map((post) => (
               <div key={post._id}>
-                <PostCard post={post} />;
+                <PostCard post={post} />
               </div>
             ))}
         </Col>
