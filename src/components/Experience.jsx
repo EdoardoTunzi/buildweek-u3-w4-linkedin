@@ -126,7 +126,7 @@ const Experience = () => {
   }, [update]); */
 
   return (
-    <Container className="bg-white my-2 p-3">
+    <Container className="bg-white my-2 p-3 border rounded-3">
       <div className="d-flex align-items-center">
         <h4>Esperienza</h4>
         <div className="d-flex ms-auto">
@@ -161,37 +161,45 @@ const Experience = () => {
         </Modal.Header>
         <Modal.Body>
           <p> * indica che è un campo obbligatorio</p>
-          <Form>
+          <Form id="experienceForm">
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Ruolo</Form.Label>
-              <Form.Control name="role" onChange={handleChange} type="text" value={formData.role} /* placeholder={onChangeRole} */ />
+              <Form.Label>Qualifica</Form.Label>
+              <Form.Control name="role" onChange={handleChange} type="text" value={formData.role} required placeholder="Esempio: Retail Sales Manager" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Company</Form.Label>
-              <Form.Control name="company" onChange={handleChange} type="text" value={formData.company} /* placeholder={onchangeCompany} */ />
+              <Form.Label>Azienda o organizzazione</Form.Label>
+              <Form.Control name="company" onChange={handleChange} type="text" value={formData.company} required placeholder="Esempio: Microsoft" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Data di inizio</Form.Label>
-              <Form.Control name="startDate" onChange={handleChange} type="date" value={formData.startDate} /* placeholder={onchangeStartDate} */ />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Data di fine</Form.Label>
-              <Form.Control name="endDate" onChange={handleChange} type="date" value={formData.endDate} /* placeholder={onchangeEndDate} */ />
-            </Form.Group>
+            <div className="d-flex gap-3 ">
+              <Form.Group className="mb-3 w-50" controlId="exampleForm.ControlInput1">
+                <Form.Label>Data di inizio</Form.Label>
+                <Form.Control name="startDate" onChange={handleChange} type="date" value={formData.startDate} required /* placeholder={onchangeStartDate} */ />
+              </Form.Group>
+              <Form.Group className="mb-3 w-50" controlId="exampleForm.ControlInput1">
+                <Form.Label>Data di fine</Form.Label>
+                <Form.Control name="endDate" onChange={handleChange} type="date" value={formData.endDate} required /* placeholder={onchangeEndDate} */ />
+              </Form.Group>
+            </div>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Descrizione</Form.Label>
-              <Form.Control name="description" onChange={handleChange} type="text" value={formData.description} /* placeholder={onchangeDescription} */ />
+              <Form.Control
+                as="textarea"
+                name="description"
+                onChange={handleChange}
+                value={formData.description}
+                required /* placeholder={onchangeDescription} */
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Località</Form.Label>
-              <Form.Control name="area" onChange={handleChange} type="text" value={formData.area} /* placeholder={onchangeArea} */ />
+              <Form.Control name="area" onChange={handleChange} type="text" value={formData.area} required placeholder="Esempio: Milano, Italy" />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           {/* {error == true && <p className="text-danger">Tutti i campi obbligatori devono essere riempiti</p>} */}
-          <Button variant="primary" className="rounded-pill px-3" type="submit" onClick={postExperiences}>
+          <Button variant="primary" className="rounded-pill px-3" type="submit" form="experienceForm" onClick={postExperiences}>
             Salva
           </Button>
         </Modal.Footer>
