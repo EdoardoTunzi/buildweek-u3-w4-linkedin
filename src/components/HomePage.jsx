@@ -40,11 +40,14 @@ const HomePage = () => {
         <Col md={3}></Col>
         <Col md={7}>
           {posts &&
-            posts.slice(0, 30).map((post) => (
-              <div key={post._id}>
-                <PostCard post={post} />
-              </div>
-            ))}
+            posts
+              .reverse()
+              .slice(0, 30)
+              .map((post) => (
+                <div key={post._id}>
+                  <PostCard post={post} />
+                </div>
+              ))}
         </Col>
         <Col md={2}></Col>
       </Row>
