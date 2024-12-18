@@ -13,8 +13,8 @@ const CardUsers = () => {
   useEffect(() => {
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     })
       .then((response) => {
         if (response.ok) {
@@ -32,8 +32,8 @@ const CardUsers = () => {
 
     fetch(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     })
       .then((response) => {
         if (response.ok) {
@@ -51,21 +51,14 @@ const CardUsers = () => {
   }, []);
 
   return (
-    <Container>
-      <Row md={1} className="d-flex flex-column border border-1 rounded-3">
+    <Container className="mt-2">
+      <Row md={1} className="d-flex flex-column border border-1 rounded-3 bg-white ">
         <div className="px-3">
           <h5 className="fs-5 mt-3 mb-0">Altri profili per te</h5>
           {firstArrUsers.map((user, index) => (
-            <Col
-              md={12}
-              key={index}
-              className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}
-            >
+            <Col md={12} key={index} className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}>
               <Card className="d-flex flex-row border-0">
-                <div
-                  className="rounded-circle overflow-hidden mt-3"
-                  style={{ width: "40px", height: "40px" }}
-                >
+                <div className="rounded-circle overflow-hidden mt-3" style={{ width: "40px", height: "40px" }}>
                   <img src={user.image} className="img-fluid" alt="" />
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between fs-6 fw-light">
@@ -74,35 +67,24 @@ const CardUsers = () => {
                   </Card.Title>
                   <Card.Text>{user.title}</Card.Text>
                   <div className="d-flex">
-                    <Button className="primary  rounded-pill text-primary bg-light px-3 py-1">
-                      Messaggio
-                    </Button>
+                    <Button className="primary  rounded-pill text-primary bg-light px-3 py-1">Messaggio</Button>
                   </div>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </div>
-        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">
-          Mostra tutto
-        </Button>
+        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">Mostra tutto</Button>
       </Row>
       <br />
-      <Row md={1} className="d-flex flex-column border border-1 rounded-3">
+      <Row md={1} className="d-flex flex-column border border-1 rounded-3 bg-white">
         <div>
           <h5 className="fs-5 mt-3 mb-0">Persone che potresti conoscere </h5>
           <span>Dalla tua azienda</span>
           {SecondArrUsers.map((user, index) => (
-            <Col
-              md={12}
-              key={index}
-              className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}
-            >
+            <Col md={12} key={index} className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}>
               <Card className="d-flex flex-row border-0">
-                <div
-                  className="rounded-circle overflow-hidden mt-3"
-                  style={{ width: "40px", height: "40px" }}
-                >
+                <div className="rounded-circle overflow-hidden mt-3" style={{ width: "40px", height: "40px" }}>
                   <img src={user.image} className="img-fluid" alt="" />
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between">
@@ -123,9 +105,7 @@ const CardUsers = () => {
             </Col>
           ))}
         </div>
-        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">
-          Mostra tutto
-        </Button>
+        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">Mostra tutto</Button>
       </Row>
     </Container>
   );

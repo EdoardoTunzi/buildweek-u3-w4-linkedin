@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Pencil } from "react-bootstrap-icons";
 const Informazioni = () => {
   return (
-    <Container className="border border-1 rounded-2 mt-4 ">
+    <Container className="border border-1 rounded-2 mt-2 bg-white ">
       <div className="d-flex align-items-center justify-content-between p-3">
         <h2 className="mb-0">Informazioni</h2>
         <p className="fs-4">
