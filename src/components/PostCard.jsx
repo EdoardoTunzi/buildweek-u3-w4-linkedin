@@ -1,11 +1,36 @@
 import { Button, Container } from "react-bootstrap";
 import { ChatText, GlobeEuropeAfrica, HandThumbsUp, Repeat, SendFill, ThreeDots, X } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 /* import { useSelector } from "react-redux"; */
 
 const PostCard = ({ post }) => {
-  /*  const mainUser = useSelector((state) => state.user._id); */
+  const mainUser = useSelector((state) => state.user._id);
   const randomNumber = Math.floor(Math.random() * 70) + 1;
   const randomNumber2 = Math.floor(Math.random() * 70) + 1;
+
+  //fetch delete post
+  const deletePost = async () => {
+    if (post.user._id === mainUser) {
+      try {
+        const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${post._id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          }
+        });
+        if (response.ok) {
+          console.log("Post cancellato con successo", response.statusText);
+        } else {
+          throw new Error("Errore in DELETE");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
     <Container className="bg-white border rounded-3 mt-2 px-3 pt-3">
       <div className="d-flex justify-content-between mb-3">
@@ -27,7 +52,7 @@ const PostCard = ({ post }) => {
         </div>
         <div className="fs-3 ">
           <ThreeDots className="me-3" />
-          <X />
+          <X onClick={deletePost} />
         </div>
       </div>
       <p>{post.text}</p>
