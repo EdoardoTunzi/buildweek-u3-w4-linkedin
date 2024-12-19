@@ -16,6 +16,7 @@ const ProfileCard = () => {
     }
   };
   const user = useSelector((state) => state.user);
+
   // const [name, setname] = useState("Davide");
   // const [surname, setsurname] = useState("Alonzi");
 
@@ -86,6 +87,7 @@ const ProfileCard = () => {
         if (response.ok) {
           handleShow();
           setUpdate(!update);
+          dispatch({ type: "RENDER_COMPONENTS" });
         } else {
           console.log("errore nella fetch put,", response.statusText);
         }
@@ -125,6 +127,7 @@ const ProfileCard = () => {
         console.log(response);
 
         console.log("Immagine caricata con successo");
+        dispatch({ type: "RENDER_COMPONENTS" });
         handleShow();
         setUpdate(!update);
       } else {
