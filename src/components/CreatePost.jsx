@@ -19,6 +19,7 @@ const CreatePost = () => {
   const [postText, setPostText] = useState("");
   const [imgFile, setImgFile] = useState(null);
   const [postId, setPostId] = useState("");
+  const [unlockImgInput, setUnlockImgInput] = useState(false);
   const dispatch = useDispatch();
 
   const handleShow = () => {
@@ -26,6 +27,7 @@ const CreatePost = () => {
       setShow(false);
     } else {
       setError(false);
+      setUnlockImgInput(false);
       setShow(true);
     }
   };
@@ -194,19 +196,26 @@ const CreatePost = () => {
                     placeholder="Di cosa vorresti parlare?"
                   />
                 </Form.Group>
-                <Form.Group controlId="formFile" className="mb-3">
-                  <Form.Label>Carica un&apos;immagine</Form.Label>
-                  <Form.Control
-                    type="file"
-                    onChange={(e) => {
-                      setImgFile(e.target.files[0]); // Salva il file selezionato
-                    }}
-                  />
-                  {/* <Button onClick={postImage}>Carica immagine</Button> */}
-                </Form.Group>
+                {unlockImgInput === true && (
+                  <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>Carica un&apos;immagine</Form.Label>
+                    <Form.Control
+                      type="file"
+                      onChange={(e) => {
+                        setImgFile(e.target.files[0]); // Salva il file selezionato
+                      }}
+                    />
+                    {/* <Button onClick={postImage}>Carica immagine</Button> */}
+                  </Form.Group>
+                )}
                 <EmojiSmile className="fs-4" />
                 <div className="fs-4 text-secondary fw-semibold">
-                  <Image className="me-4" />
+                  <Image
+                    className="me-4"
+                    onClick={() => {
+                      setUnlockImgInput(true);
+                    }}
+                  />
                   <PlayBtnFill className="me-4" />
                   <Calendar2Week className="me-4" />
                   <PlusLg className="me-4" />
