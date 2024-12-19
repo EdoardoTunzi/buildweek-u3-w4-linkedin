@@ -44,6 +44,7 @@ const CreatePost = () => {
         } else {
           const responseObj = await response.json();
           setPostId(responseObj._id);
+          postImage();
           console.log(postId);
         }
       } catch (err) {
@@ -64,7 +65,7 @@ const CreatePost = () => {
     console.log(img);
 
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId} `, {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
         method: "POST",
         headers: {
           Authorization:
@@ -183,7 +184,6 @@ const CreatePost = () => {
                 type="submit"
                 onClick={() => {
                   handleSubmit();
-                  setTimeout(postImage, 3000);
                 }}
               >
                 Salva

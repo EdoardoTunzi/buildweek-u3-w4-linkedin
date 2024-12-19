@@ -1,11 +1,12 @@
 import { Button, Container } from "react-bootstrap";
 import { ChatText, GlobeEuropeAfrica, HandThumbsUp, Repeat, SendFill, ThreeDots, X } from "react-bootstrap-icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const PostCard = ({ post }) => {
   const mainUser = useSelector((state) => state.user._id);
   const randomNumber = Math.floor(Math.random() * 70) + 1;
   const randomNumber2 = Math.floor(Math.random() * 70) + 1;
+  const dispatch = useDispatch();
 
   //fetch delete post
   const deletePost = async () => {
@@ -21,6 +22,7 @@ const PostCard = ({ post }) => {
         });
         if (response.ok) {
           console.log("Post cancellato con successo", response.statusText);
+          dispatch({ type: "RENDER_COMPONENTS" });
         } else {
           throw new Error("Errore in DELETE");
         }

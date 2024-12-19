@@ -1,17 +1,20 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { BookmarkFill, PersonPlusFill, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-
+import image from "../assets/imgs/backImage.png";
 const LeftAsideHome = () => {
   const user = useSelector((state) => state.user);
   return (
     <>
       {user && (
         <Container>
-          <Row md={2} className="mt-2 bg-white rounded-3">
-            <Col md={12} className="flex-column border rounded-3">
+          <Row md={2} className="mt-2 bg-white rounded-3 border rounded-3">
+            <Col md={12} className="p-0">
+              <img src={image} className="h-75 w-100 rounded-top-2" alt="" />
+            </Col>
+            <Col md={12} style={{ marginTop: "-80px" }} className="flex-column ">
               <Col md={12} className="text-center">
-                <img src={user.image} width={80} height={80} alt="" className="my-4 rounded-circle" />
+                <img src={user.image} width={80} height={80} alt="" className="my-4 rounded-circle border border-2 border-white" />
               </Col>
               <Col md={12} className="text-center">
                 <a href="#userprofile" className="text-decoration-none fw-semibold text-dark fs-5">
