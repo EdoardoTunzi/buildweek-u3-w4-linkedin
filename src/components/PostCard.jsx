@@ -1,7 +1,6 @@
 import { Button, Container } from "react-bootstrap";
 import { ChatText, GlobeEuropeAfrica, HandThumbsUp, Repeat, SendFill, ThreeDots, X } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-/* import { useSelector } from "react-redux"; */
 
 const PostCard = ({ post }) => {
   const mainUser = useSelector((state) => state.user._id);
