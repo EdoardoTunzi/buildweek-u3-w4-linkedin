@@ -1,20 +1,36 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { BookmarkFill, PersonPlusFill, PlusLg } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-
+import image from "../assets/imgs/backImage.png";
 const LeftAsideHome = () => {
   const user = useSelector((state) => state.user);
   return (
     <>
       {user && (
         <Container>
-          <Row md={2} className="mt-2 bg-white rounded-3">
-            <Col md={12} className="flex-column border rounded-3">
+          <Row md={2} className="mt-2 bg-white rounded-3 border rounded-3">
+            <Col md={12} className="p-0">
+              <img src={image} className="h-75 w-100 rounded-top-2" alt="" />
+            </Col>
+            <Col
+              md={12}
+              style={{ marginTop: "-80px" }}
+              className="flex-column "
+            >
               <Col md={12} className="text-center">
-                <img src={user.image} width={80} height={80} alt="" className="my-4 rounded-circle" />
+                <img
+                  src={user.image}
+                  width={80}
+                  height={80}
+                  alt=""
+                  className="my-4 rounded-circle border border-2 border-white"
+                />
               </Col>
               <Col md={12} className="text-center">
-                <a href="#userprofile" className="text-decoration-none fw-semibold text-dark fs-5">
+                <a
+                  href="#userprofile"
+                  className="text-decoration-none fw-semibold text-dark fs-5"
+                >
                   {user.name + user.surname}
                 </a>
                 <p className="text-secondary">{user.title}</p>
@@ -32,9 +48,16 @@ const LeftAsideHome = () => {
               <hr />
               <Col md={12} className="">
                 <div>
-                  <p className="text-secondary">Accedi a strumenti e informazioni in esclusiva</p>
+                  <p className="text-secondary">
+                    Accedi a strumenti e informazioni in esclusiva
+                  </p>
                   <div className="d-flex align-items-baseline">
-                    <img src="/src/assets/img/dropdownIcon.png" alt="box-icon" className="rounded-2" width={20} />
+                    <img
+                      src="/src/assets/img/dropdownIcon.png"
+                      alt="box-icon"
+                      className="rounded-2"
+                      width={20}
+                    />
 
                     <p className="ms-2 fw-semibold">Prova premium gratis</p>
                   </div>
@@ -55,11 +78,17 @@ const LeftAsideHome = () => {
           <Row className="flex-column mt-2 bg-white rounded-3">
             <Col className="flex-column border rounded-3">
               <div className="mt-2">
-                <a href="#gruppi" className="text-primary fw-semibold text-decoration-none">
+                <a
+                  href="#gruppi"
+                  className="text-primary fw-semibold text-decoration-none"
+                >
                   Gruppi
                 </a>
                 <div className="d-flex justify-content-between align-items-baseline">
-                  <a href="#eventi" className="fw-semibold text-primary mt-3 mb-0 text-decoration-none">
+                  <a
+                    href="#eventi"
+                    className="fw-semibold text-primary mt-3 mb-0 text-decoration-none"
+                  >
                     Eventi
                   </a>
                   <PlusLg className="text-dark fs-5" />

@@ -130,15 +130,15 @@ const CreatePost = () => {
             </Col>
           </Row>
           <div className="mt-3 d-flex justify-content-around ">
-            <div className=" hover px-3 py-1 text-dark d-flex align-items-center">
+            <div className="btn-custom px-3 py-1 text-dark d-flex align-items-center rounded-3">
               <PlayBtnFill className="text-success fs-4 me-2" />
               <p className="m-0 fw-semibold d-inline-block fs-5">Video</p>
             </div>
-            <div className=" hover px-3 py-1 text-dark d-flex align-items-center">
+            <div className="btn-custom px-3 py-1 text-dark d-flex align-items-center rounded-3">
               <Image className="text-primary fs-4 me-2" />
               <p className="m-0 fw-semibold f-inline-block fs-5">Foto</p>
             </div>
-            <div className=" px-3 py-1 text-dark d-flex align-items-center">
+            <div className=" btn-custom px-3 py-1 text-dark d-flex align-items-center rounded-3">
               <Newspaper className="color-orange fs-4 me-2" />
               <p className="m-0 fw-semibold f-inline-block fs-5">
                 Scrivi un articolo
