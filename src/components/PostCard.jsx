@@ -18,7 +18,7 @@ const PostCard = ({ post }) => {
             height={50}
           />
           <div className="lh-1 ms-2">
-            <h5 className="m-0">{post.user.name + post.user.surname || post.user.username}</h5>
+            <h5 className="m-0">{post.user.name + " " + post.user.surname || post.user.username}</h5>
             <p className="m-0 mb-1 text-secondary">{post.user.title || ""}</p>
             <p className="m-0 text-secondary">
               2s • <GlobeEuropeAfrica />
@@ -31,6 +31,11 @@ const PostCard = ({ post }) => {
         </div>
       </div>
       <p>{post.text}</p>
+      {post.image && (
+        <div className="text-center mb-3">
+          <img className="object-fit-cover w-100" src={post.image} alt="post image" />
+        </div>
+      )}
       {/* barra interazioni */}
       <div className="d-flex justify-content-between">
         <div className="d-flex align-items-center">

@@ -9,6 +9,9 @@ const CreatePost = () => {
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
   const [postText, setPostText] = useState("");
+  const [imgFile, setImgFile] = useState(null);
+  const [postId, setPostId] = useState("");
+
   const handleShow = () => {
     if (show === true) {
       setShow(false);
@@ -40,11 +43,45 @@ const CreatePost = () => {
           console.log("errore nella fetch post,", response.statusText);
         } else {
           const responseObj = await response.json();
-          console.log(responseObj);
+          setPostId(responseObj._id);
+          console.log(postId);
         }
       } catch (err) {
         console.log(err);
       }
+    }
+  };
+
+  // Fetch per postare l'immagine
+  const postImage = async () => {
+    if (!imgFile && !postId) {
+      console.log("Nessun file selezionato o id mancante");
+      return;
+    }
+
+    const img = new FormData();
+    img.append("post", imgFile); // Aggiungi il file al FormData
+    console.log(img);
+
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId} `, {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+        },
+        body: img
+      });
+
+      if (response.ok) {
+        console.log(response);
+
+        console.log("Immagine caricata con successo");
+      } else {
+        console.log("Errore nel caricamento dell'immagine:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Errore nella richiesta:", error);
     }
   };
 
@@ -119,6 +156,16 @@ const CreatePost = () => {
                     placeholder="Di cosa vorresti parlare?"
                   />
                 </Form.Group>
+                <Form.Group controlId="formFile" className="mb-3">
+                  <Form.Label>Carica un&apos;immagine</Form.Label>
+                  <Form.Control
+                    type="file"
+                    onChange={(e) => {
+                      setImgFile(e.target.files[0]); // Salva il file selezionato
+                    }}
+                  />
+                  {/* <Button onClick={postImage}>Carica immagine</Button> */}
+                </Form.Group>
                 <EmojiSmile className="fs-4" />
                 <div className="fs-4 text-secondary fw-semibold">
                   <Image className="me-4" />
@@ -136,6 +183,7 @@ const CreatePost = () => {
                 type="submit"
                 onClick={() => {
                   handleSubmit();
+                  setTimeout(postImage, 3000);
                 }}
               >
                 Salva
