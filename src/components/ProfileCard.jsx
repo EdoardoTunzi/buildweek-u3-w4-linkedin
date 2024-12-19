@@ -5,6 +5,8 @@ import img from "../assets/imgs/backImage.png";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProfileCard = () => {
+  const [update, setUpdate] = useState(false);
+  const [file, setFile] = useState(null);
   const [show, setShow] = useState(false);
   const handleShow = () => {
     if (show === true) {
@@ -81,7 +83,10 @@ const ProfileCard = () => {
             body: JSON.stringify(modUser)
           }
         );
-        if (!response.ok) {
+        if (response.ok) {
+          handleShow();
+          setUpdate(!update);
+        } else {
           console.log("errore nella fetch put,", response.statusText);
         }
       } catch (err) {
@@ -91,6 +96,45 @@ const ProfileCard = () => {
       console.log("errore nel changing");
 
       setError(true);
+    }
+  };
+  const postImage = async () => {
+    if (!file) {
+      console.log("Nessun file selezionato");
+      return;
+    }
+
+    const img = new FormData();
+    img.append("profile", file); // Aggiungi il file al FormData
+    console.log(img);
+
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${user._id}/picture`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          },
+          body: img
+        }
+      );
+
+      if (response.ok) {
+        console.log(response);
+
+        console.log("Immagine caricata con successo");
+        handleShow();
+        setUpdate(!update);
+      } else {
+        console.log(
+          "Errore nel caricamento dell'immagine:",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("Errore nella richiesta:", error);
     }
   };
 
@@ -286,6 +330,16 @@ const ProfileCard = () => {
                     type="text"
                     placeholder={job}
                   />
+                </Form.Group>
+                <Form.Group controlId="formFile" className="mb-3">
+                  <Form.Label>Carica un&apos;immagine</Form.Label>
+                  <Form.Control
+                    type="file"
+                    onChange={(e) => {
+                      setFile(e.target.files[0]); // Salva il file selezionato
+                    }}
+                  />
+                  <Button onClick={postImage}>Carica immagine</Button>
                 </Form.Group>
               </Form>
             </Modal.Body>
