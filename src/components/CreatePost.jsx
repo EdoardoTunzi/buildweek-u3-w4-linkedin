@@ -3,7 +3,7 @@ import { Button, Col, Container, Row, Modal, Form } from "react-bootstrap";
 
 import { Calendar2Week, CaretDownFill, EmojiSmile, Image, Newspaper, PlayBtnFill, PlusLg } from "react-bootstrap-icons";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const CreatePost = () => {
   const user = useSelector((state) => state.user);
   const [error, setError] = useState(false);
@@ -11,6 +11,7 @@ const CreatePost = () => {
   const [postText, setPostText] = useState("");
   const [imgFile, setImgFile] = useState(null);
   const [postId, setPostId] = useState("");
+  const dispatch = useDispatch();
 
   const handleShow = () => {
     if (show === true) {
@@ -40,6 +41,8 @@ const CreatePost = () => {
           body: JSON.stringify(postObj)
         });
         if (!response.ok) {
+          handleShow();
+          dispatch({ type: "RENDER_COMPONENTS" });
           console.log("errore nella fetch post,", response.statusText);
         } else {
           const responseObj = await response.json();
@@ -57,6 +60,8 @@ const CreatePost = () => {
   const postImage = async () => {
     if (!imgFile && !postId) {
       console.log("Nessun file selezionato o id mancante");
+      handleShow();
+      dispatch({ type: "RENDER_COMPONENTS" });
       return;
     }
 
@@ -76,7 +81,8 @@ const CreatePost = () => {
 
       if (response.ok) {
         console.log(response);
-
+        handleShow();
+        dispatch({ type: "RENDER_COMPONENTS" });
         console.log("Immagine caricata con successo");
       } else {
         console.log("Errore nel caricamento dell'immagine:", response.statusText);
