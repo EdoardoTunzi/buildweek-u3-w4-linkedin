@@ -8,6 +8,7 @@ const DetailsExperience = () => {
   const [modExperience, setModExperience] = useState(null);
   const [show, setShow] = useState(false);
   const [update, setUpdate] = useState(false);
+  const [file, setFile] = useState(null);
   const [formData, setFormData] = useState({
     role: "",
     company: "",
@@ -133,6 +134,39 @@ const DetailsExperience = () => {
     }
   };
 
+  // Fetch per postare l'immagine
+  const postImage = async () => {
+    if (!file) {
+      console.log("Nessun file selezionato");
+      return;
+    }
+
+    const img = new FormData();
+    img.append("experience", file); // Aggiungi il file al FormData
+    console.log(img);
+
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences/${modExperience._id}/picture`, {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+        },
+        body: img
+      });
+
+      if (response.ok) {
+        console.log(response);
+
+        console.log("Immagine caricata con successo");
+      } else {
+        console.log("Errore nel caricamento dell'immagine:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Errore nella richiesta:", error);
+    }
+  };
+
   useEffect(() => {
     fetchExperiences();
   }, []);
@@ -222,6 +256,16 @@ const DetailsExperience = () => {
                         required
                         placeholder={modExperience.description}
                       />
+                    </Form.Group>
+                    <Form.Group controlId="formFile" className="mb-3">
+                      <Form.Label>Carica un&apos;immagine</Form.Label>
+                      <Form.Control
+                        type="file"
+                        onChange={(e) => {
+                          setFile(e.target.files[0]); // Salva il file selezionato
+                        }}
+                      />
+                      <Button onClick={postImage}>Carica immagine</Button>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                       <Form.Label>Località</Form.Label>
