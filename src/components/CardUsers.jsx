@@ -8,7 +8,7 @@ const CardUsers = () => {
 
   const url = "https://striveschool-api.herokuapp.com/api/profile/";
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNlOTBlYTI4NjAwMTUyOGI5NDMiLCJpYXQiOjE3MzQzNDE2MDksImV4cCI6MTczNTU1MTIwOX0.KgjoM4alFntSS9veo-2FQ3kPVGiGRk5bFqvpuq4tifs"; // Sostituisci con il tuo Bearer token
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNlOTBlYTI4NjAwMTUyOGI5NDMiLCJpYXQiOjE3MzQzNDE2MDksImV4cCI6MTczNTU1MTIwOX0.KgjoM4alFntSS9veo-2FQ3kPVGiGRk5bFqvpuq4tifs";
 
   useEffect(() => {
     fetch(url, {
@@ -23,8 +23,8 @@ const CardUsers = () => {
         throw new Error("Errore nel reperimento dei dati!");
       })
       .then((arrfirstArrUsers) => {
-        const firstArrfirstArrUsers = arrfirstArrUsers.slice(6, 12);
-        setfirstArrUsers(firstArrfirstArrUsers);
+        const firstArrUsers = arrfirstArrUsers.slice(6, 12);
+        setfirstArrUsers(firstArrUsers);
       })
       .catch((error) => {
         console.error("C'è stato un problema con la fetch:", error);
