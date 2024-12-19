@@ -1,9 +1,17 @@
 import { Button, Col, Container, Row, Modal, Form } from "react-bootstrap";
 // import { useSelector } from "react-redux";
 
-import { Calendar2Week, CaretDownFill, EmojiSmile, Image, Newspaper, PlayBtnFill, PlusLg } from "react-bootstrap-icons";
+import {
+  Calendar2Week,
+  CaretDownFill,
+  EmojiSmile,
+  Image,
+  Newspaper,
+  PlayBtnFill,
+  PlusLg
+} from "react-bootstrap-icons";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const CreatePost = () => {
   const user = useSelector((state) => state.user);
   const [error, setError] = useState(false);
@@ -11,6 +19,7 @@ const CreatePost = () => {
   const [postText, setPostText] = useState("");
   const [imgFile, setImgFile] = useState(null);
   const [postId, setPostId] = useState("");
+  const dispatch = useDispatch();
 
   const handleShow = () => {
     if (show === true) {
@@ -30,20 +39,25 @@ const CreatePost = () => {
       };
       console.log(postText);
       try {
-        const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
-          },
-          body: JSON.stringify(postObj)
-        });
+        const response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/posts/",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+            },
+            body: JSON.stringify(postObj)
+          }
+        );
         if (!response.ok) {
           console.log("errore nella fetch post,", response.statusText);
         } else {
           const responseObj = await response.json();
           setPostId(responseObj._id);
+          handleShow();
+          dispatch({ type: "RENDER_COMPONENTS" });
           console.log(postId);
         }
       } catch (err) {
@@ -64,21 +78,27 @@ const CreatePost = () => {
     console.log(img);
 
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId} `, {
-        method: "POST",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
-        },
-        body: img
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId} `,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          },
+          body: img
+        }
+      );
 
       if (response.ok) {
         console.log(response);
 
         console.log("Immagine caricata con successo");
       } else {
-        console.log("Errore nel caricamento dell'immagine:", response.statusText);
+        console.log(
+          "Errore nel caricamento dell'immagine:",
+          response.statusText
+        );
       }
     } catch (error) {
       console.error("Errore nella richiesta:", error);
@@ -91,7 +111,12 @@ const CreatePost = () => {
         <Container className="mt-2 mb-2 px-3 py-2 border rounded-2 bg-white">
           <Row>
             <Col xs={1}>
-              <img style={{ height: "50px" }} className="rounded-circle " src={user.image} alt="profile photo" />
+              <img
+                style={{ height: "50px" }}
+                className="rounded-circle "
+                src={user.image}
+                alt="profile photo"
+              />
             </Col>
             <Col xs={11}>
               <Button
@@ -115,7 +140,9 @@ const CreatePost = () => {
             </div>
             <div className=" px-3 py-1 text-dark d-flex align-items-center">
               <Newspaper className="color-orange fs-4 me-2" />
-              <p className="m-0 fw-semibold f-inline-block fs-5">Scrivi un articolo</p>
+              <p className="m-0 fw-semibold f-inline-block fs-5">
+                Scrivi un articolo
+              </p>
             </div>
           </div>
 
@@ -125,10 +152,18 @@ const CreatePost = () => {
               handleShow();
             }}
           >
-            <Modal.Header closeButton className="border-0 d-flex align-items-start">
+            <Modal.Header
+              closeButton
+              className="border-0 d-flex align-items-start"
+            >
               <Modal.Title>
                 <div className="d-flex align-items-center">
-                  <img src={user.image} alt="profile image" className="rounded-circle" style={{ height: "80px" }} />
+                  <img
+                    src={user.image}
+                    alt="profile image"
+                    className="rounded-circle"
+                    style={{ height: "80px" }}
+                  />
                   <div className="ms-2">
                     <p className="mb-0">
                       {user.name} {user.surname} <CaretDownFill />
@@ -144,7 +179,10 @@ const CreatePost = () => {
                   handleSubmit();
                 }}
               >
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput1"
+                >
                   <Form.Control
                     className="border "
                     as="textarea"
@@ -176,7 +214,11 @@ const CreatePost = () => {
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              {error == true && <p className="text-danger me-5">Non puoi salvare un post vuoto</p>}
+              {error == true && (
+                <p className="text-danger me-5">
+                  Non puoi salvare un post vuoto
+                </p>
+              )}
               <Button
                 variant="primary"
                 className="rounded-pill px-3"

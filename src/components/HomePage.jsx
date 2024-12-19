@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import PostCard from "./PostCard";
 import { useEffect, useState } from "react";
 import LeftAsideHome from "./LeftAsideHome";
@@ -6,17 +6,29 @@ import RightAsideHome from "./RightAsideHome";
 import AsideFooterHome from "./AsideFooterHome";
 import CreatePost from "./CreatePost";
 import { CaretDownFill } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
+  const render = useSelector((state) => state.render);
+  let [loading, setLoading] = useState(false);
   //fetch dei post
+  const handleLoading = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  };
   const getPosts = async () => {
     try {
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          }
         }
-      });
+      );
       if (response.ok) {
         let postsArray = await response.json();
         if (postsArray) {
@@ -37,6 +49,10 @@ const HomePage = () => {
     getPosts();
     /* console.log(posts); */
   }, []);
+  useEffect(() => {
+    getPosts();
+    handleLoading();
+  }, [render]);
 
   return (
     <Container>
@@ -52,11 +68,15 @@ const HomePage = () => {
                 <p>____________________________</p>
               </Col>
               <Col xs={8} className="fs-7 text-end">
-                Seleziona la visualizzazione del feed: <span className="text-dark fw-semibold">Più rilevanti per primi</span> <CaretDownFill />
+                Seleziona la visualizzazione del feed:{" "}
+                <span className="text-dark fw-semibold">
+                  Più rilevanti per primi
+                </span>{" "}
+                <CaretDownFill />
               </Col>
             </Row>
           </Container>
-          {posts &&
+          {posts && loading === false ? (
             posts
               .reverse()
               .slice(0, 30)
@@ -64,7 +84,16 @@ const HomePage = () => {
                 <div key={post._id}>
                   <PostCard post={post} />
                 </div>
-              ))}
+              ))
+          ) : (
+            <div className="w-100 text-center mt-5">
+              <Spinner
+                className="text-center"
+                animation="border"
+                variant="primary"
+              />
+            </div>
+          )}
         </Col>
         <Col md={3}>
           <RightAsideHome />
