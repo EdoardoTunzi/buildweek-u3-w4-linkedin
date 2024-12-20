@@ -1,16 +1,27 @@
+import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { ChatText, GlobeEuropeAfrica, HandThumbsUp, Repeat, SendFill, ThreeDots, X } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
+import Comments from "./Comments";
 
 const PostCard = ({ post }) => {
-  const mainUser = useSelector((state) => state.user._id);
-  const randomNumber = Math.floor(Math.random() * 70) + 1;
+  const mainUser = useSelector((state) => state.user);
+  const [switchCom, setSwitchCom] = useState(false);
+  const [comments, setComments] = useState();
+  /* const randomNumber = Math.floor(Math.random() * 70) + 1; */
   const randomNumber2 = Math.floor(Math.random() * 70) + 1;
   const dispatch = useDispatch();
 
+  const handleShow = () => {
+    if (switchCom === true) {
+      setSwitchCom(false);
+    } else {
+      setSwitchCom(true);
+    }
+  };
   //fetch delete post
   const deletePost = async () => {
-    if (post.user._id === mainUser) {
+    if (post.user._id === mainUser._id) {
       try {
         const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${post._id}`, {
           method: "DELETE",
@@ -31,6 +42,33 @@ const PostCard = ({ post }) => {
       }
     }
   };
+
+  /*  const fetchComments = async () => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+        }
+      });
+      if (response.ok) {
+        let comments = await response.json();
+        comments = comments.filter((comment) => comment.elementId === post._id);
+        setComments(comments);
+        console.log(comments);
+
+        handleShow();
+      } else {
+        throw new Error("Errore in DELETE");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }; */
+
+  useEffect(() => {
+    /* fetchComments(); */
+  }, []);
 
   return (
     <Container className="bg-white border rounded-3 mt-2 px-3 pt-3">
@@ -70,7 +108,14 @@ const PostCard = ({ post }) => {
           <img src="https://static.licdn.com/aero-v1/sc/h/b1dl5jk88euc7e9ri50xy5qo8" alt="" />
           <p className="m-0 ms-2 text-secondary">{randomNumber2}</p>
         </div>
-        <p className="m-0 text-secondary">{randomNumber} Commenti</p>
+        <p
+          className="m-0 text-secondary"
+          onClick={() => {
+            handleShow();
+          }}
+        >
+          {comments && comments.length} Commenti
+        </p>
       </div>
       <div className="border-top d-flex justify-content-around mt-1 px-5 py-1">
         <Button className="btn bg-white text-dark border-white btn-custom px-4 py-2">
@@ -98,6 +143,7 @@ const PostCard = ({ post }) => {
           </div>
         </Button>
       </div>
+      {switchCom && <Comments post={post} setComment={setComments} />}
     </Container>
   );
 };

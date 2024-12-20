@@ -44,7 +44,7 @@ const CreatePost = () => {
         } else {
           const responseObj = await response.json();
           setPostId(responseObj._id);
-          postImage();
+          postImage(); //dovrebbe passare l'id direttamente qui
           console.log(postId);
         }
       } catch (err) {
