@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { PersonPlusFill } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
 
 const CardUsers = () => {
   const [firstArrUsers, setfirstArrUsers] = useState([]);
   const [SecondArrUsers, setSecondArrUsers] = useState([]);
-
+  const dispatch = useDispatch();
   const url = "https://striveschool-api.herokuapp.com/api/profile/";
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNlOTBlYTI4NjAwMTUyOGI5NDMiLCJpYXQiOjE3MzQzNDE2MDksImV4cCI6MTczNTU1MTIwOX0.KgjoM4alFntSS9veo-2FQ3kPVGiGRk5bFqvpuq4tifs";
@@ -52,13 +53,26 @@ const CardUsers = () => {
 
   return (
     <Container className="mt-2">
-      <Row md={1} className="d-flex flex-column border border-1 rounded-3 bg-white ">
+      <Row
+        md={1}
+        className="d-flex flex-column border border-1 rounded-3 bg-white "
+      >
         <div className="px-3">
           <h5 className="fs-5 mt-3 mb-0">Altri profili per te</h5>
           {firstArrUsers.map((user, index) => (
-            <Col md={12} key={index} className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}>
+            <Col
+              md={12}
+              key={index}
+              className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}
+              onClick={() => {
+                dispatch({ type: "MOD_USER", payload: user });
+              }}
+            >
               <Card className="d-flex flex-row border-0">
-                <div className="rounded-circle overflow-hidden mt-3" style={{ width: "40px", height: "40px" }}>
+                <div
+                  className="rounded-circle overflow-hidden mt-3"
+                  style={{ width: "40px", height: "40px" }}
+                >
                   <img src={user.image} className="img-fluid" alt="" />
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between fs-6 fw-light">
@@ -67,24 +81,41 @@ const CardUsers = () => {
                   </Card.Title>
                   <Card.Text>{user.title}</Card.Text>
                   <div className="d-flex">
-                    <Button className="primary  rounded-pill text-primary bg-light px-3 py-1">Messaggio</Button>
+                    <Button className="primary  rounded-pill text-primary bg-light px-3 py-1">
+                      Messaggio
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </div>
-        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">Mostra tutto</Button>
+        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">
+          Mostra tutto
+        </Button>
       </Row>
       <br />
-      <Row md={1} className="d-flex flex-column border border-1 rounded-3 bg-white">
+      <Row
+        md={1}
+        className="d-flex flex-column border border-1 rounded-3 bg-white"
+      >
         <div>
           <h5 className="fs-5 mt-3 mb-0">Persone che potresti conoscere </h5>
           <span>Dalla tua azienda</span>
           {SecondArrUsers.map((user, index) => (
-            <Col md={12} key={index} className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}>
+            <Col
+              md={12}
+              key={index}
+              className={`ms-1 ${index !== 5 ? "border-bottom" : ""}`}
+              onClick={() => {
+                dispatch({ type: "MOD_USER", payload: user });
+              }}
+            >
               <Card className="d-flex flex-row border-0">
-                <div className="rounded-circle overflow-hidden mt-3" style={{ width: "40px", height: "40px" }}>
+                <div
+                  className="rounded-circle overflow-hidden mt-3"
+                  style={{ width: "40px", height: "40px" }}
+                >
                   <img src={user.image} className="img-fluid" alt="" />
                 </div>
                 <Card.Body className="d-flex flex-column justify-content-between">
@@ -105,7 +136,9 @@ const CardUsers = () => {
             </Col>
           ))}
         </div>
-        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">Mostra tutto</Button>
+        <Button className="btn border-0 border-top fw-semibold text-dark bg-white">
+          Mostra tutto
+        </Button>
       </Row>
     </Container>
   );

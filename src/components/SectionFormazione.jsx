@@ -1,16 +1,20 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { Pencil, PlusLg } from "react-bootstrap-icons";
+import { Pencil, Plus } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 const SectionFormazione = () => {
+  const _id = useSelector((state) => state.user._id);
   return (
     <Container className="bg-white mt-2">
       <Row className="flex-column border rounded-2 px-2 py-3 mb-1">
         <div className="d-flex justify-content-between">
-          <h4 className="mb-0 ">Formazione</h4>
-          <div>
-            <PlusLg className="fs-4 me-3" />
-            <Pencil className="fs-5" />
-          </div>
+          <h4 className="mb-0">Formazione</h4>
+          {_id === "675ff3db0ea286001528b941" && (
+            <div>
+              <Plus className="fs-1 me-2" />
+              <Pencil className="fs-5" />
+            </div>
+          )}
         </div>
         <Col>
           <div className="d-flex border-bottom mt-3">

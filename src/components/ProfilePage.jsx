@@ -11,15 +11,22 @@ import Interessi from "./Interessi";
 import LinguaProfilo from "./LinguaProfilo";
 import Experience from "./Experience";
 import SectionFormazione from "./SectionFormazione";
+import { useSelector } from "react-redux";
 
 const ProfilePage = () => {
+  const _id = useSelector((state) => state.user._id);
   return (
     <Container>
       <Row className="mt-4 mb-5 pb-5">
         <Col xs={9}>
           <ProfileCard />
-          <SectionConsigliati />
-          <Analisi />
+          {_id === "675ff3db0ea286001528b941" && (
+            <>
+              {" "}
+              <SectionConsigliati />
+              <Analisi />{" "}
+            </>
+          )}
           <Informazioni />
           <Attivita />
           <Experience />
@@ -28,7 +35,7 @@ const ProfilePage = () => {
           <Interessi />
         </Col>
         <Col xs={3}>
-          <LinguaProfilo />
+          {_id === "675ff3db0ea286001528b941" && <LinguaProfilo />}
           <CardUsers />
         </Col>
       </Row>

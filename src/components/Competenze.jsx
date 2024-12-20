@@ -1,15 +1,19 @@
 import { Button, Container } from "react-bootstrap";
 import { ArrowRight, Pencil, PlusLg } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 const Competenze = () => {
+  const _id = useSelector((state) => state.user._id);
   return (
     <Container className="bg-white border rounded-3 mt-2 px-3 pt-3">
       <div className="d-flex align-items-center">
         <h4>Competenze</h4>
-        <div className="d-flex ms-auto">
-          <PlusLg className="me-3 fs-4" />
-          <Pencil className="fs-5" />
-        </div>
+        {_id === "675ff3db0ea286001528b941" && (
+          <div className="d-flex ms-auto">
+            <PlusLg className="me-3 fs-4" />
+            <Pencil className="fs-5" />
+          </div>
+        )}
       </div>
 
       <div>
@@ -21,7 +25,10 @@ const Competenze = () => {
             width={30}
             className="rounded-circle "
           />
-          <p className="m-0 ms-2"> Full Stack - Web Development Student presso EPICODE</p>
+          <p className="m-0 ms-2">
+            {" "}
+            Full Stack - Web Development Student presso EPICODE
+          </p>
         </div>
         <div className="d-flex align-items-center mt-3">
           <img
@@ -30,7 +37,9 @@ const Competenze = () => {
             width={30}
             className="rounded-circle"
           />
-          <p className="m-0 ms-2">Competenze confermate da 1 persona negli ultimi 6 mesi</p>
+          <p className="m-0 ms-2">
+            Competenze confermate da 1 persona negli ultimi 6 mesi
+          </p>
         </div>
         <div className="d-flex mt-3 align-items-center">
           <svg
