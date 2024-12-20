@@ -5,8 +5,8 @@ const Analisi = () => {
   return (
     <>
       <Container className="border border-1 rounded-2 mt-2 bg-white">
-        <div className="p-3 ">
-          <h2 className="mb-1">Analisi</h2>
+        <div className="p-2 ">
+          <h4 className="mb-1">Analisi</h4>
           <p className="text-secondary">
             <EyeFill /> Solo per te
           </p>

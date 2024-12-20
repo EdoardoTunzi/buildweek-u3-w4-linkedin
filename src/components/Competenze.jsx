@@ -16,7 +16,7 @@ const Competenze = () => {
         <p className="fw-semibold mb-1">Epicode</p>
         <div className="d-flex align-items-center">
           <img
-            src="https://yt3.googleusercontent.com/9RGAVa52qAdJfJSShxr9prs7EUpia4tsVsnvrb-E1Yhdj7H4LMU4gHLRDC-7tJLV9BVYaEq6M7g=s900-c-k-c0x00ffffff-no-rj"
+            src="https://www.ecommerceacademy.it/wp-content/uploads/2023/05/Epicode-coding-bootcamp_ecommerce-academy_b2commerce_900x900.jpg"
             alt="epicode logo"
             width={30}
             className="rounded-circle "

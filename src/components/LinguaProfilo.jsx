@@ -3,7 +3,7 @@ import { Pencil } from "react-bootstrap-icons";
 
 const LinguaProfilo = () => {
   return (
-    <Container className="bg-white">
+    <Container className="bg-white rounded-3">
       <Row className="flex-column border rounded-2">
         <Col>
           <div className="border-bottom">

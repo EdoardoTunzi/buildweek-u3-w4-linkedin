@@ -153,7 +153,7 @@ const ProfileCard = () => {
                     <span className=" d-block mb-3">
                       {area} -{" "}
                       <a className="text-decoration-none" href="#">
-                        Informazioni di contato
+                        Informazioni di contatto
                       </a>
                     </span>
                     <span className="mb-2 d-block">
