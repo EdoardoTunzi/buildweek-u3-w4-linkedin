@@ -36,12 +36,15 @@ const DetailsExperience = () => {
 
   const fetchExperiences = async () => {
     try {
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          }
         }
-      });
+      );
       if (response.ok) {
         let experiences = await response.json();
         if (experiences) {
@@ -72,8 +75,12 @@ const DetailsExperience = () => {
       const formattedData = {
         role: formData.role,
         company: formData.company,
-        startDate: formData.startDate ? new Date(formData.startDate).toISOString().split("T")[0] : null,
-        endDate: formData.endDate ? new Date(formData.endDate).toISOString().split("T")[0] : null,
+        startDate: formData.startDate
+          ? new Date(formData.startDate).toISOString().split("T")[0]
+          : null,
+        endDate: formData.endDate
+          ? new Date(formData.endDate).toISOString().split("T")[0]
+          : null,
         description: formData.description,
         area: formData.area
       };
@@ -81,15 +88,18 @@ const DetailsExperience = () => {
       try {
         console.log(JSON.stringify(formattedData));
 
-        const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences/${modExperience._id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
-          },
-          body: JSON.stringify(formattedData)
-        });
+        const response = await fetch(
+          `https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences/${modExperience._id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+            },
+            body: JSON.stringify(formattedData)
+          }
+        );
         if (response.ok) {
           const newExperience = await response.json();
           console.log(newExperience);
@@ -113,19 +123,24 @@ const DetailsExperience = () => {
         console.log(error);
       }
     } else {
-      alert("Tutti i campi sono obbligatori, assicurati di aver riempito tutti i campi");
+      alert(
+        "Tutti i campi sono obbligatori, assicurati di aver riempito tutti i campi"
+      );
     }
   };
 
   const deleteExperience = async () => {
     console.log(modExperience._id);
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences/${modExperience._id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+    const response = await fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences/${modExperience._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+        }
       }
-    });
+    );
     if (response.ok) {
       handleShow();
       setUpdate(!update);
@@ -146,21 +161,27 @@ const DetailsExperience = () => {
     console.log(img);
 
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences/${modExperience._id}/picture`, {
-        method: "POST",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
-        },
-        body: img
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/675ff3db0ea286001528b941/experiences/${modExperience._id}/picture`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          },
+          body: img
+        }
+      );
 
       if (response.ok) {
         console.log(response);
 
         console.log("Immagine caricata con successo");
       } else {
-        console.log("Errore nel caricamento dell'immagine:", response.statusText);
+        console.log(
+          "Errore nel caricamento dell'immagine:",
+          response.statusText
+        );
       }
     } catch (error) {
       console.error("Errore nella richiesta:", error);
@@ -182,16 +203,29 @@ const DetailsExperience = () => {
           <Container className="bg-white my-2 p-3 border rounded-3">
             {experiences &&
               experiences.map((experience, index) => (
-                <div key={index} className="d-flex mt-2 border p-3 justify-content-between">
+                <div
+                  key={index}
+                  className="d-flex mt-2 border p-3 justify-content-between"
+                >
                   <div>
-                    <img src={experience.image} alt="logo" width={50} height={50} />
+                    <img
+                      src={experience.image}
+                      alt="logo"
+                      width={50}
+                      height={50}
+                    />
                     <div>
                       <h5 className="m-0">{experience.company}</h5>
                       <p className="m-0 fw-semibold">{experience.role}</p>
                       <p className="m-0">{experience.description}</p>
                       <p className="m-0 text-secondary">
-                        {experience.startDate.toLocaleString().slice(0, experience.startDate.indexOf("T"))} -{" "}
-                        {experience.endDate.toLocaleString().slice(0, experience.startDate.indexOf("T"))}
+                        {experience.startDate
+                          .toLocaleString()
+                          .slice(0, experience.startDate.indexOf("T"))}{" "}
+                        -{" "}
+                        {experience.endDate
+                          .toLocaleString()
+                          .slice(0, experience.startDate.indexOf("T"))}
                       </p>
                       <p className="m-0 text-secondary">{experience.area}</p>
                     </div>
@@ -215,17 +249,40 @@ const DetailsExperience = () => {
                 <Modal.Body>
                   <p> * indica che è un campo obbligatorio</p>
                   <Form id="experienceForm">
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
                       <Form.Label>Qualifica</Form.Label>
-                      <Form.Control name="role" onChange={handleChange} type="text" value={formData.role} required placeholder={modExperience.role} />
+                      <Form.Control
+                        name="role"
+                        onChange={handleChange}
+                        type="text"
+                        value={formData.role}
+                        required
+                        placeholder={modExperience.role}
+                      />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
                       <Form.Label>Azienda o organizzazione</Form.Label>
-                      <Form.Control name="company" onChange={handleChange} type="text" value={formData.company} required placeholder={modExperience.company} />
+                      <Form.Control
+                        name="company"
+                        onChange={handleChange}
+                        type="text"
+                        value={formData.company}
+                        required
+                        placeholder={modExperience.company}
+                      />
                     </Form.Group>
 
                     <div className="d-flex gap-3 ">
-                      <Form.Group className="mb-3 w-50" controlId="exampleForm.ControlInput1">
+                      <Form.Group
+                        className="mb-3 w-50"
+                        controlId="exampleForm.ControlInput1"
+                      >
                         <Form.Label>Data di inizio</Form.Label>
                         <Form.Control
                           name="startDate"
@@ -235,7 +292,10 @@ const DetailsExperience = () => {
                           required /* placeholder={onchangeStartDate} */
                         />
                       </Form.Group>
-                      <Form.Group className="mb-3 w-50" controlId="exampleForm.ControlInput1">
+                      <Form.Group
+                        className="mb-3 w-50"
+                        controlId="exampleForm.ControlInput1"
+                      >
                         <Form.Label>Data di fine</Form.Label>
                         <Form.Control
                           name="endDate"
@@ -246,7 +306,10 @@ const DetailsExperience = () => {
                         />
                       </Form.Group>
                     </div>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
                       <Form.Label>Descrizione</Form.Label>
                       <Form.Control
                         as="textarea"
@@ -267,17 +330,37 @@ const DetailsExperience = () => {
                       />
                       <Button onClick={postImage}>Carica immagine</Button>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
                       <Form.Label>Località</Form.Label>
-                      <Form.Control name="area" onChange={handleChange} type="text" value={formData.area} required placeholder={modExperience.area} />
+                      <Form.Control
+                        name="area"
+                        onChange={handleChange}
+                        type="text"
+                        value={formData.area}
+                        required
+                        placeholder={modExperience.area}
+                      />
                     </Form.Group>
                   </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="primary" className="rounded-pill px-3" type="submit" form="experienceForm" onClick={putExperience}>
+                  <Button
+                    variant="primary"
+                    className="rounded-pill px-3"
+                    type="submit"
+                    form="experienceForm"
+                    onClick={putExperience}
+                  >
                     Modifica
                   </Button>
-                  <Button variant="danger" className="rounded-pill px-3" onClick={deleteExperience}>
+                  <Button
+                    variant="danger"
+                    className="rounded-pill px-3"
+                    onClick={deleteExperience}
+                  >
                     Elimina esperienza
                   </Button>
                 </Modal.Footer>
