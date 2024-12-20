@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
   const render = useSelector((state) => state.render);
+  const [commentsArr, setCommentsArr] = useState([]);
   let [loading, setLoading] = useState(false);
   //fetch dei post
   const handleLoading = () => {
@@ -41,9 +42,33 @@ const HomePage = () => {
       console.log(error);
     }
   };
+  //fetch commenti
+  const fetchComments = async () => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+        }
+      });
+      if (response.ok) {
+        let comments = await response.json();
+
+        setCommentsArr(comments);
+        console.log(comments);
+
+        /* handleShow(); */
+      } else {
+        throw new Error("Errore in DELETE");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     getPosts();
+    fetchComments();
     /* console.log(posts); */
   }, []);
   useEffect(() => {
@@ -75,7 +100,7 @@ const HomePage = () => {
               .slice(0, 30)
               .map((post) => (
                 <div key={post._id}>
-                  <PostCard post={post} />
+                  <PostCard post={post} comments={commentsArr} />
                 </div>
               ))
           ) : (

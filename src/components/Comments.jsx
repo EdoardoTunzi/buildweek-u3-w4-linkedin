@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-const Comments = ({ post, setComment }) => {
+const Comments = ({ post }) => {
   const [comments, setComments] = useState();
   const mainUser = useSelector((state) => state.user);
   const [postData, setPostData] = useState({
@@ -24,7 +24,6 @@ const Comments = ({ post, setComment }) => {
         let comments = await response.json();
         comments = comments.filter((comment) => comment.elementId === post._id);
         setComments(comments);
-        setComment(comments);
         console.log(comments);
 
         /* handleShow(); */

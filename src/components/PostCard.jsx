@@ -4,10 +4,10 @@ import { ChatText, GlobeEuropeAfrica, HandThumbsUp, Repeat, SendFill, ThreeDots,
 import { useDispatch, useSelector } from "react-redux";
 import Comments from "./Comments";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, comments }) => {
   const mainUser = useSelector((state) => state.user);
   const [switchCom, setSwitchCom] = useState(false);
-  const [comments, setComments] = useState();
+
   /* const randomNumber = Math.floor(Math.random() * 70) + 1; */
   const randomNumber2 = Math.floor(Math.random() * 70) + 1;
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const PostCard = ({ post }) => {
     }
   };
 
-  /*  const fetchComments = async () => {
+  /*    const fetchComments = async () => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`, {
         headers: {
@@ -64,7 +64,7 @@ const PostCard = ({ post }) => {
     } catch (err) {
       console.log(err);
     }
-  }; */
+  };  */
 
   useEffect(() => {
     /* fetchComments(); */
@@ -114,7 +114,7 @@ const PostCard = ({ post }) => {
             handleShow();
           }}
         >
-          {comments && comments.length} Commenti
+          {comments && comments.filter((comment) => comment.elementId === post._id).length} Commenti
         </p>
       </div>
       <div className="border-top d-flex justify-content-around mt-1 px-5 py-1">
@@ -143,7 +143,7 @@ const PostCard = ({ post }) => {
           </div>
         </Button>
       </div>
-      {switchCom && <Comments post={post} setComment={setComments} />}
+      {switchCom && <Comments post={post} />}
     </Container>
   );
 };
