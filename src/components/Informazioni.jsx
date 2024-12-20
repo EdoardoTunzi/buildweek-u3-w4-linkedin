@@ -8,7 +8,7 @@ const Informazioni = () => {
       <div className="d-flex align-items-center justify-content-between p-2">
         <h4 className="mb-0">Informazioni</h4>
         {_id === "675ff3db0ea286001528b941" && (
-          <p className="fs-4 m-0">
+          <p className="fs-5 m-0">
             <Pencil />
           </p>
         )}
