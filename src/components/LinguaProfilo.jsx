@@ -1,7 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { Pencil } from "react-bootstrap-icons";
+import { useSelector } from "react-redux";
 
 const LinguaProfilo = () => {
+  const user = useSelector((state) => state.user);
   return (
     <Container className="bg-white rounded-3">
       <Row className="flex-column border rounded-2">
@@ -20,7 +22,9 @@ const LinguaProfilo = () => {
               <h5 className="fs-6">Profilo pubblico e URL</h5>
               <Pencil />
             </div>
-            <p className="fw-light">www.linkedin.com/in/nome-cognome-02155489</p>
+            <p className="fw-light">
+              www.linkedin.com/in/{user.name}-{user.surname}-02155489
+            </p>
           </div>
         </Col>
       </Row>

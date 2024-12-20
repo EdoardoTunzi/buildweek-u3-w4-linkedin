@@ -92,14 +92,14 @@ const CreatePost = () => {
         <Container className="mt-2 mb-2 px-3 py-2 border rounded-2 bg-white">
           <Row className="mt-2">
             <Col xs={1}>
-              <img style={{ width: "50px", height: "50px" }} className="rounded-circle " src={user.image} alt="profile photo" />
+              <img style={{ width: "50px", height: "50px" }} className="rounded-circle" src={user.image} alt="profile photo" />
             </Col>
             <Col xs={11}>
               <Button
                 onClick={() => {
                   handleShow();
                 }}
-                className="h-100 w-100 rounded-pill text-start border-secondary text-secondary fw-semibold bg-white"
+                className="ms-2 h-100 w-100 rounded-pill text-start border-secondary text-secondary fw-semibold bg-white"
               >
                 Crea un post
               </Button>

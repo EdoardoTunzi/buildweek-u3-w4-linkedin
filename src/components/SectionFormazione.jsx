@@ -11,7 +11,7 @@ const SectionFormazione = () => {
           <h4 className="mb-0">Formazione</h4>
           {_id === "675ff3db0ea286001528b941" && (
             <div>
-              <Plus className="fs-1 me-2" />
+              <Plus className="fs-2 me-2" />
               <Pencil className="fs-5" />
             </div>
           )}

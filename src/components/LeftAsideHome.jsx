@@ -14,7 +14,7 @@ const LeftAsideHome = () => {
             </Col>
             <Col md={12} style={{ marginTop: "-80px" }} className="flex-column ">
               <Col md={12} className="text-center">
-                <img src={user.image} width={90} height={90} alt="" className="my-4 rounded-circle border border-2 border-white" />
+                <img src={user.image} width={100} height={100} alt="" className="my-4 rounded-circle border border-2 border-white" />
               </Col>
               <Col md={12} className="text-center">
                 <a href="#userprofile" className="text-decoration-none fw-semibold text-dark fs-5">

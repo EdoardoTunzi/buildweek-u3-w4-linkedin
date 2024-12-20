@@ -5,10 +5,10 @@ const Informazioni = () => {
   const _id = useSelector((state) => state.user._id);
   return (
     <Container className="border border-1 rounded-2 mt-2 bg-white ">
-      <div className="d-flex align-items-center justify-content-between p-3">
-        <h2 className="mb-0">Informazioni</h2>
+      <div className="d-flex align-items-center justify-content-between p-2">
+        <h4 className="mb-0">Informazioni</h4>
         {_id === "675ff3db0ea286001528b941" && (
-          <p className="fs-4">
+          <p className="fs-4 m-0">
             <Pencil />
           </p>
         )}
