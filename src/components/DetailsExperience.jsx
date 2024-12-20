@@ -61,6 +61,21 @@ const DetailsExperience = () => {
     }
   };
 
+  const handleFunction = (e) => {
+    e.preventDefault();
+    if (
+      formData.role.length > 0 &&
+      formData.company.length > 0 &&
+      formData.startDate !== null &&
+      formData.endDate !== null &&
+      formData.description.length > 0 &&
+      formData.area.length > 0
+    ) {
+      putExperience();
+    } else if (file !== null) {
+      postImage();
+    }
+  };
   const putExperience = async (e) => {
     e?.preventDefault();
     if (
@@ -107,6 +122,9 @@ const DetailsExperience = () => {
           setExperiences((prev) => [...prev, newExperience]);
           handleShow(); //chiude il modale
           //resetta form
+          if (file !== null) {
+            postImage();
+          }
           setFormData({
             role: "",
             company: "",
@@ -175,7 +193,8 @@ const DetailsExperience = () => {
 
       if (response.ok) {
         console.log(response);
-
+        handleShow();
+        setUpdate(!update);
         console.log("Immagine caricata con successo");
       } else {
         console.log(
@@ -213,6 +232,7 @@ const DetailsExperience = () => {
                       alt="logo"
                       width={50}
                       height={50}
+                      className="rounded-circle"
                     />
                     <div>
                       <h5 className="m-0">{experience.company}</h5>
@@ -259,7 +279,6 @@ const DetailsExperience = () => {
                         onChange={handleChange}
                         type="text"
                         value={formData.role}
-                        required
                         placeholder={modExperience.role}
                       />
                     </Form.Group>
@@ -273,7 +292,6 @@ const DetailsExperience = () => {
                         onChange={handleChange}
                         type="text"
                         value={formData.company}
-                        required
                         placeholder={modExperience.company}
                       />
                     </Form.Group>
@@ -289,7 +307,7 @@ const DetailsExperience = () => {
                           onChange={handleChange}
                           type="date"
                           value={formData.startDate}
-                          required /* placeholder={onchangeStartDate} */
+                          /* placeholder={onchangeStartDate} */
                         />
                       </Form.Group>
                       <Form.Group
@@ -302,7 +320,7 @@ const DetailsExperience = () => {
                           onChange={handleChange}
                           type="date"
                           value={formData.endDate}
-                          required /* placeholder={onchangeEndDate} */
+                          /* placeholder={onchangeEndDate} */
                         />
                       </Form.Group>
                     </div>
@@ -316,7 +334,6 @@ const DetailsExperience = () => {
                         name="description"
                         onChange={handleChange}
                         value={formData.description}
-                        required
                         placeholder={modExperience.description}
                       />
                     </Form.Group>
@@ -328,7 +345,7 @@ const DetailsExperience = () => {
                           setFile(e.target.files[0]); // Salva il file selezionato
                         }}
                       />
-                      <Button onClick={postImage}>Carica immagine</Button>
+                      {/* <Button onClick={postImage}>Carica immagine</Button> */}
                     </Form.Group>
                     <Form.Group
                       className="mb-3"
@@ -340,7 +357,6 @@ const DetailsExperience = () => {
                         onChange={handleChange}
                         type="text"
                         value={formData.area}
-                        required
                         placeholder={modExperience.area}
                       />
                     </Form.Group>
@@ -352,7 +368,7 @@ const DetailsExperience = () => {
                     className="rounded-pill px-3"
                     type="submit"
                     form="experienceForm"
-                    onClick={putExperience}
+                    onClick={handleFunction}
                   >
                     Modifica
                   </Button>
