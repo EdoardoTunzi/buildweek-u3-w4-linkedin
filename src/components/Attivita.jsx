@@ -17,9 +17,11 @@ const Attivita = () => {
             <Button className="bg-white text-primary d-inline-block rounded-pill fw-semibold">
               Crea un post
             </Button>
-            <p className="ms-3 d-inline-block fs-4">
-              <Pencil className="fs-5" />
-            </p>
+            {_id === "675ff3db0ea286001528b941" && (
+              <p className="ms-3 d-inline-block fs-4">
+                <Pencil className="fs-5" />
+              </p>
+            )}
           </div>
         </div>
         <div>
