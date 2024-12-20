@@ -18,9 +18,10 @@ const LeftAsideHome = () => {
               </Col>
               <Col md={12} className="text-center">
                 <a href="#userprofile" className="text-decoration-none fw-semibold text-dark fs-5">
-                  {user.name + user.surname}
+                  {user.name + " " + user.surname}
                 </a>
-                <p className="text-secondary">{user.title}</p>
+                <p className="text-secondary mb-1">{user.title}</p>
+                <p className="text-secondary">{user.bio}</p>
               </Col>
               <hr />
               <Col md={12}>
