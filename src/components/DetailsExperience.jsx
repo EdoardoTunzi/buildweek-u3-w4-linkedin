@@ -210,7 +210,7 @@ const DetailsExperience = () => {
             {modExperience && (
               <Modal show={show} onHide={handleShow}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Aggiungi esperienza</Modal.Title>
+                  <Modal.Title>Modifica esperienza</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <p> * indica che è un campo obbligatorio</p>
