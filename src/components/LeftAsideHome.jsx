@@ -45,7 +45,7 @@ const LeftAsideHome = () => {
                 </div>
               </Col>
               <hr />
-              <Col md={12} className="border-bottom">
+              <Col md={12} className="">
                 <div className="d-flex">
                   <div>
                     <BookmarkFill className="text-secondary" />

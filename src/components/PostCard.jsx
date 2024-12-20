@@ -136,7 +136,7 @@ const PostCard = ({ post, comments }) => {
             <p className="m-0 small">Diffondi il post</p>
           </div>
         </Button>
-        <Button className="btn bg-white text-dark border-white btn-custom px-4">
+        <Button className="btn bg-white text-dark border-white btn-custom px-2">
           <div className="d-flex align-items-center">
             <SendFill className="me-1" />
             <p className="m-0 small">Invia</p>
