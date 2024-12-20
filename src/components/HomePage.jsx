@@ -17,16 +17,19 @@ const HomePage = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1500);
   };
   const getPosts = async () => {
     try {
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          }
         }
-      });
+      );
       if (response.ok) {
         let postsArray = await response.json();
         if (postsArray) {
@@ -45,12 +48,15 @@ const HomePage = () => {
   //fetch commenti
   const fetchComments = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/`, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzVmZjNkYjBlYTI4NjAwMTUyOGI5NDEiLCJpYXQiOjE3MzQzNDE1OTUsImV4cCI6MTczNTU1MTE5NX0.LSC43uSIUtEWWYNRb3pfzyjTIES5Zi1XKgg7DKonBjQ"
+          }
         }
-      });
+      );
       if (response.ok) {
         let comments = await response.json();
 
@@ -87,10 +93,14 @@ const HomePage = () => {
           <Container>
             <Row className="text-secondary d-flex justify-content-between align-items-center">
               <Col xs={4}>
-                <p>__________________________</p>
+                <p>__________________________________</p>
               </Col>
               <Col xs={8} className="fs-7 text-end">
-                Seleziona la visualizzazione del feed: <span className="text-dark fw-semibold">Più rilevanti per primi</span> <CaretDownFill />
+                Seleziona la visualizzazione del feed:{" "}
+                <span className="text-dark fw-semibold">
+                  Più rilevanti per primi
+                </span>{" "}
+                <CaretDownFill />
               </Col>
             </Row>
           </Container>
@@ -105,7 +115,11 @@ const HomePage = () => {
               ))
           ) : (
             <div className="w-100 text-center mt-5">
-              <Spinner className="text-center" animation="border" variant="primary" />
+              <Spinner
+                className="text-center"
+                animation="border"
+                variant="primary"
+              />
             </div>
           )}
         </Col>
