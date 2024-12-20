@@ -90,9 +90,9 @@ const CreatePost = () => {
     <>
       {user && (
         <Container className="mt-2 mb-2 px-3 py-2 border rounded-2 bg-white">
-          <Row>
+          <Row className="mt-2">
             <Col xs={1}>
-              <img style={{ height: "50px" }} className="rounded-circle " src={user.image} alt="profile photo" />
+              <img style={{ width: "50px", height: "50px" }} className="rounded-circle " src={user.image} alt="profile photo" />
             </Col>
             <Col xs={11}>
               <Button
@@ -106,15 +106,15 @@ const CreatePost = () => {
             </Col>
           </Row>
           <div className="mt-3 d-flex justify-content-around ">
-            <div className=" hover px-3 py-1 text-dark d-flex align-items-center">
+            <div className=" btn-custom rounded-3 px-3 py-1 text-dark d-flex align-items-center">
               <PlayBtnFill className="text-success fs-4 me-2" />
               <p className="m-0 fw-semibold d-inline-block fs-5">Video</p>
             </div>
-            <div className=" hover px-3 py-1 text-dark d-flex align-items-center">
+            <div className=" btn-custom rounded-3 px-3 py-1 text-dark d-flex align-items-center">
               <Image className="text-primary fs-4 me-2" />
               <p className="m-0 fw-semibold f-inline-block fs-5">Foto</p>
             </div>
-            <div className=" px-3 py-1 text-dark d-flex align-items-center">
+            <div className=" btn-custom rounded-3 px-3 py-1 text-dark d-flex align-items-center">
               <Newspaper className="color-orange fs-4 me-2" />
               <p className="m-0 fw-semibold f-inline-block fs-5">Scrivi un articolo</p>
             </div>
